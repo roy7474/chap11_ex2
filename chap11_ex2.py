@@ -10,7 +10,8 @@ Enter file:mbox.txt
 
 Enter file:mbox-short.txt
 39756'''
-
+lst = list()
+count = 0
 import re
 fhand = open('mbox-short.txt')
 
@@ -18,4 +19,8 @@ for line in fhand:
     words = line.rstrip()
     x = re.findall('^New Revision: ([0-9]+)', words)
     if len(x) > 0:
-        print(x)
+        #lst = lst + x
+        lst.append(x)
+
+print(lst)
+#“print(sum(nums)/len(nums))'''
