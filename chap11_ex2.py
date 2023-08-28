@@ -10,19 +10,28 @@ Enter file:mbox.txt
 
 Enter file:mbox-short.txt
 39756'''
+
 lst = list()
 count = 0
 import re
-fhand = open('mbox-short.txt')
+file_name = input('Enter the name of the file that you would like to work with: ')
+try:
+    fhand = open(file_name)
+
+except FileNotFoundError:
+    print('The file could not be opened. Please try again!')
+    exit()
 
 for line in fhand:
     words = line.rstrip()
+    #Extract the number from each of the lines using a regular expression and the findall() method
     x = re.findall('^New Revision: ([0-9]+)', words)
-    if len(x) > 0:
+    if len(x) > 0:                          #tracting only strings
         for val in x:
-            val = int(val)
-            lst.append(val)
+            val = int(val)                  #converting strings into intergers
+            lst.append(val)                 #adding the intergers to the list
 
 
-print(lst)
-print(sum(lst)/len(lst))
+# print(lst)
+average = sum(lst)/len(lst)
+print('The average is:', average)                    #calculating the average
