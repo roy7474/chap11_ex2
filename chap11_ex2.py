@@ -16,5 +16,6 @@ fhand = open('mbox-short.txt')
 
 for line in fhand:
     words = line.rstrip()
-    x = re.findall('^New Revision: .*([0-9])', words)
-    print(x)
+    x = re.findall('^New Revision: ([0-9]+)', words)
+    if len(x) > 0:
+        print(x)
