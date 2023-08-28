@@ -19,8 +19,10 @@ for line in fhand:
     words = line.rstrip()
     x = re.findall('^New Revision: ([0-9]+)', words)
     if len(x) > 0:
-        #lst = lst + x
-        lst.append(x)
+        for val in x:
+            val = int(val)
+            lst.append(val)
+
 
 print(lst)
-#“print(sum(nums)/len(nums))'''
+print(sum(lst)/len(lst))
